@@ -1,0 +1,43 @@
+name: Generate phar
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ '**' ]
+  create:
+    tags:
+      - "*"
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      COMPOSER_NO_INTERACTION: 1
+
+    strategy:
+      matrix:
+        php: [8.0]
+        setup: [prefer-stable]
+
+    name: Build PHAR
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: composer:v2
+
+      - name: Build
+        run: echo "<?php echo getenv('PHAR_PACKAGE_VERSION');" | php
+        env:
+          PHAR_PACKAGE_VERSION: ${{ secrets.GITHUB_REF }}
