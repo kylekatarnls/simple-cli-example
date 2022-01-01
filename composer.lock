@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "24ba2c54b9f53e80df51520647690773",
+    "content-hash": "02a38e25a7c8e33f4838e57c46e9c1b8",
     "packages": [
         {
             "name": "simple-cli/simple-cli",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kylekatarnls/simple-cli.git",
-                "reference": "819ba07dd86406467fcc0665269c22de006a70fa"
+                "reference": "3d67788d606c7793c12af2ea76d22438a089d5a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kylekatarnls/simple-cli/zipball/819ba07dd86406467fcc0665269c22de006a70fa",
-                "reference": "819ba07dd86406467fcc0665269c22de006a70fa",
+                "url": "https://api.github.com/repos/kylekatarnls/simple-cli/zipball/3d67788d606c7793c12af2ea76d22438a089d5a5",
+                "reference": "3d67788d606c7793c12af2ea76d22438a089d5a5",
                 "shasum": ""
             },
             "require": {
@@ -69,7 +69,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-31T16:11:11+00:00"
+            "time": "2022-01-01T22:29:11+00:00"
         }
     ],
     "packages-dev": [],

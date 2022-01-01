@@ -35,4 +35,14 @@ class EasyCalc extends SimpleCli
             SelfUpdate::class,
         ];
     }
+
+    public function getCommandAliases(): array
+    {
+        return [
+            'plus'    => 'add',
+            'sum'     => 'add',
+            'times'   => 'multiply',
+            'product' => 'multiply',
+        ];
+    }
 }
