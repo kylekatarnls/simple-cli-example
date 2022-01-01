@@ -7,6 +7,7 @@ namespace SimpleCli\SimpleCliExample;
 use SimpleCli\Command\SelfUpdate;
 use SimpleCli\SimpleCli;
 use SimpleCli\SimpleCliExample\Command\Add;
+use SimpleCli\SimpleCliExample\Command\Multiply;
 
 class EasyCalc extends SimpleCli
 {
@@ -30,6 +31,7 @@ class EasyCalc extends SimpleCli
     {
         return [
             Add::class,
+            Multiply::class,
             SelfUpdate::class,
         ];
     }
