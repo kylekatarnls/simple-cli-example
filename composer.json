@@ -1,0 +1,24 @@
+{
+    "name": "simple-cli/simple-cli-example",
+    "description": "Demo of CLI program using simple-cli framework",
+    "type": "project",
+    "bin": [
+        "bin/example"
+    ],
+    "require": {
+        "simple-cli/simple-cli": "dev-feature/self-update"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SimpleCli\\SimpleCliExample\\": "src/SimpleCli/SimpleCliExample"
+        }
+    },
+    "authors": [
+        {
+            "name": "kylekatarnls",
+            "email": "kylekatarnls@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

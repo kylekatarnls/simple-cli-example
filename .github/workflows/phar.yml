@@ -21,6 +21,7 @@ jobs:
 
     strategy:
       matrix:
+        program: [easy-calc]
         php: [8.0]
         setup: [prefer-stable]
 
@@ -37,7 +38,31 @@ jobs:
           coverage: none
           tools: composer:v2
 
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: phar-${{ runner.os }}-php${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-dev
+
       - name: Build
-        run: echo "<?php echo getenv('PHAR_PACKAGE_VERSION');" | php
+        run: |
+          chmod +x ./vendor/bin/simple-cli
+          PHAR_PACKAGE_VERSION=${GITHUB_REF##*/} ./vendor/bin/simple-cli build-phar
+
+      - name: Upload ${{ matrix.program }}.phar
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.program }}.phar
+          path: ${{ matrix.program }}.phar
+
+      - name: Release ${{ matrix.program }}.phar
+        if: github.event_name == 'release'
+        uses: skx/github-action-publish-binaries@master
         env:
-          PHAR_PACKAGE_VERSION: ${{ secrets.GITHUB_REF }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: ${{ matrix.program }}.phar
